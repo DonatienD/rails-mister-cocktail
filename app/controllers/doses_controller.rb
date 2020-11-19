@@ -6,6 +6,10 @@ class DosesController < ApplicationController
 
   def create
     @dose = Dose.new(dose_params)
+    if @ingredient.nil?
+      render :new
+      return
+    end
     @ingredient = Ingredient.find(params[:dose][:ingredient_id])
     @dose.ingredient = @ingredient
     @dose.cocktail = @cocktail
