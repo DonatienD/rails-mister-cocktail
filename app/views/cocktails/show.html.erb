@@ -1,2 +1,25 @@
 <h1><%= @cocktail.name %></h1>
 <%= link_to "⬅️ Go back to cocktails", cocktails_path %>
+<br>
+<br>
+<h3><em>Ingredients</em></h3>
+
+<ul class="list-group">
+  <% @cocktail.ingredients.each do |ingredient| %>
+
+    <% ingredient.doses.each do |dose| %>
+      <li class="list-group-item">
+        <strong><%= ingredient.name.capitalize %>:</strong>
+        <%= dose.description %>
+        <%= link_to "❌",
+            dose_path(dose),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+<br>
+
+<button class="btn"><%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail) %></button>
+<br>
