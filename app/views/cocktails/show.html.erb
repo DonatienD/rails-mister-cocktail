@@ -1,6 +1,7 @@
 <h1><%= @cocktail.name %></h1>
 <%= link_to "⬅️ Go back to cocktails", cocktails_path %>
 <br>
+<%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
 <br>
 <h3><em>Ingredients</em></h3>
 
