@@ -4,7 +4,7 @@ class Dose < ApplicationRecord
 
   validates :description, presence: true
   validates :cocktail_id, presence: true
-  validates :ingredient_id, presence: true
+  validates :ingredient_id, presence: true, exclusion: { in: [""], message: "Please add an ingredient"  }
 
   validates :ingredient_id, uniqueness: { scope: :cocktail_id }
 end
