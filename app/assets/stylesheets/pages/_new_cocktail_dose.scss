@@ -1,0 +1,40 @@
+.container {
+  position: relative;
+}
+
+.page-title-box {
+  padding: 1.5rem 5rem 1.5rem 3rem;
+  position: absolute;
+  width: 45%;
+  min-width: 250px;
+  max-width: 450px;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  text-align: left;
+  background-color: #FFC53A;
+  color: #000;
+  z-index: 1;
+}
+
+.form-box {
+  padding: 9rem 5rem 3rem 2rem;
+  position: absolute;
+  display: flex;
+  width: 85%;
+  margin-top: 2.5rem;
+  margin-left: 2.5rem;
+  text-align: left;
+  background-color: #60695C;
+  color: white;
+  z-index: 0;
+}
+
+.add-btn {
+  position: absolute;
+  bottom: -1rem;
+  right: -1rem;
+  margin-top: 1rem;
+  font-style: bold;
+  font-size: 1.3rem;
+  padding: .5rem 1rem;
+}

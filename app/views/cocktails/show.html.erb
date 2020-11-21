@@ -1,26 +1,46 @@
-<h1><%= @cocktail.name %></h1>
-<%= link_to "⬅️ Go back to cocktails", cocktails_path %>
-<br>
-<%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
-<br>
-<h3><em>Ingredients</em></h3>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @cocktail.photo.key, height: 300, width: 400, crop: :fill %>')">
+  <div class="container">
+    <h1><%= @cocktail.name %></h1>
+    <br>
+  </div>
+</div>
 
-<ul class="list-group">
-  <% @cocktail.ingredients.each do |ingredient| %>
+<div class="cocktail-content">
+  <div class="ingredient-heading-card">
+    <h3><em>Ingredients</em></h3>
+  </div>
 
-    <% ingredient.doses.each do |dose| %>
-      <li class="list-group-item">
-        <strong><%= ingredient.name.capitalize %>:</strong>
-        <%= dose.description %>
-        <%= link_to "❌",
-            dose_path(dose),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
-<br>
 
-<button class="btn"><%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail) %></button>
+
+  <div class="ingredient-list-card">
+    <div class="ingredient-list">
+      <ul>
+        <% @cocktail.ingredients.each do |ingredient| %>
+
+          <% ingredient.doses.each do |dose| %>
+            <li class="ingredient-list-item">
+              <div class="ingredient-item-name">
+                <strong><%= ingredient.name.capitalize %></strong>
+              </div>
+              <div class="ingredient-item-description">
+                <span>—</span>
+                <%= dose.description %>
+              </div>
+              <div class="ingredient-item-icons">
+                  <%= link_to(dose_path(dose),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" }) do %>
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  <% end %>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="add-ingredient-button">
+      <%= link_to "Add ingredient", new_cocktail_dose_path(@cocktail) %>
+    </div>
+  </div>
+</div>
 <br>

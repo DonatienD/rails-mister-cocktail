@@ -1,13 +1,19 @@
-<h1>Miss & Mister Cocktails</h1>
+<div class="banner">
+  <div class="container">
+    <h1>Miss & Mister Cocktails</h1>
+    <br>
+    <p>Let's have a taste</p>
+  </div>
+</div>
 
-<br>
-<button class="btn"><%= link_to "Create a new cocktail", new_cocktail_path %></button>
-<br>
-
-<ul class="list-group">
-<% @cocktails.each do |cocktail| %>
-  <li class="list-group-item"><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
-<% end %>
-</ul>
+<div class="container">
+  <div class="cards">
+    <% @cocktails.each do |cocktail| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo.key, height: 300, width: 400, crop: :fill %>')">
+        <%= link_to cocktail.name, cocktail_path(cocktail) %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <br>
